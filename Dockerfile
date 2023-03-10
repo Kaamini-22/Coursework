@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/classes/com /tmp/com
+COPY ./target/classes/Code1 /tmp/Code1
 WORKDIR /tmp
-ENTRYPOINT ["java", "com.napier.sem.Intro"]
+ENTRYPOINT ["java", "Code1.Intro"]
