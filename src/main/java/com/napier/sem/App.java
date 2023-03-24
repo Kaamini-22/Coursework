@@ -1,6 +1,9 @@
 package com.napier.sem;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args)
@@ -10,6 +13,9 @@ public class App {
 
         // Connect to database
         a.connect();
+
+        // top N populated countries unfiltered
+        TopNPopulatedCountries.topNPopulatedCountriesWorld();
 
         // Disconnect from database
         a.disconnect();
