@@ -10,7 +10,9 @@ public class App {
 
         // Connect to database
         a.connect();
-
+        country coun = a.getCountry("ARG");
+        // Display results
+        a.displayCountry(coun);
         // Disconnect from database
         a.disconnect();
     }
@@ -64,4 +66,51 @@ public class App {
             }
         }
     }
+    public country getCountry(String CCode)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent "
+                            + "FROM country "
+                            + "WHERE Code = " + CCode;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new country if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                country coun = new country();
+                coun.Code = rset.getString("Code");
+                coun.Name = rset.getString("Name");
+                coun.Continent = rset.getString("Continent");
+                return coun;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+    public void displayCountry(country coun)
+    {
+        if (coun != null)
+        {
+            System.out.println(
+                    coun.Code + " "
+                            + coun.Name + " "
+                            + coun.Continent + "\n"
+                            + coun.Population + "\n"
+                            + coun.GNP + "\n"
+                            + coun.Capital + "\n");
+        }
+    }
+
 }
