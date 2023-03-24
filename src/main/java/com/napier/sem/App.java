@@ -74,9 +74,9 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent "
+                    "SELECT Code, Name, Continent, Population, GNP, Capital "
                             + "FROM country "
-                            + "WHERE Code = " + CCode;
+                            + "WHERE Code = " + "'" + CCode + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new country if valid.
@@ -87,6 +87,9 @@ public class App {
                 coun.Code = rset.getString("Code");
                 coun.Name = rset.getString("Name");
                 coun.Continent = rset.getString("Continent");
+                coun.Population = rset.getInt("Population");
+                coun.GNP = rset.getInt("GNP");
+                coun.Capital = rset.getInt("Capital");
                 return coun;
             }
             else
