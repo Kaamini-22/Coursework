@@ -1,4 +1,4 @@
-name: A workflow for my Hello World App
+name: A workflow for SE08103 Coursework
 on: push
 
 jobs:
