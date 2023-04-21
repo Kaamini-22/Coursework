@@ -11,10 +11,11 @@ public class App {
         // Connect to database
         a.connect();
         Country coun = Country.getCountry("ARG");
+        int N = 5;
         // Display results
         Country.displayCountry(coun);
         // Top N countries by population
-        TopNPopulatedCountries.topNPopulatedCountriesWorld();
+        TopNPopulatedCountries.topNPopulatedCountriesWorld(N);
         // Disconnect from database
         a.disconnect();
     }
