@@ -21,10 +21,27 @@ public class Country {
     public int Capital;
     public String Code2;
 
-    static Country getCountry(String CCode)
-    {
-        Connection con = null;
+    public Country() {
+        Code = null;
+        Name = null;
+        Continent = null;
+        Region = null;
+        Population = 0;
+        this.GNP = 0;
+        Capital = 0;
+    }
+    public Country(String code, String name, String continent, String region, int population, int GNP, int capital) {
+        Code = code;
+        Name = name;
+        Continent = continent;
+        Region = region;
+        Population = population;
+        this.GNP = GNP;
+        Capital = capital;
+    }
 
+    static Country getCountry(Connection con, String CCode)
+    {
         try
         {
             // Create an SQL statement
@@ -32,8 +49,8 @@ public class Country {
             // Create string for SQL statement
             String strSelect =
                     "SELECT Code, Name, Continent, Population, GNP, Capital "
-                            + "FROM country "
-                            + "WHERE Code = " + "'" + CCode + "'";
+                            + "FROM world.country "
+                            + "WHERE Code = " + "'ARG'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new country if valid.

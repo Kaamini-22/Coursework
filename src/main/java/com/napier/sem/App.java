@@ -3,6 +3,11 @@ package com.napier.sem;
 import java.sql.*;
 
 public class App {
+    /**
+     * Connection to MySQL database.
+     */
+    static public Connection con = null;
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -10,20 +15,21 @@ public class App {
 
         // Connect to database
         a.connect();
-        Country coun = Country.getCountry("ARG");
+
+        //define coun
+        Country coun = Country.getCountry(con,"ARG"); // pass in connection to the function
+        System.out.println(coun);
+        //define N
         int N = 5;
+
         // Display results
         Country.displayCountry(coun);
-        // Top N countries by population
-        TopNPopulatedCountries.topNPopulatedCountriesWorld(N);
+        // Top N countries by population in the world
+        TopNPopulatedCountries.topNPopulatedCountriesWorld(con, N); // pass in connection to the function
         // Disconnect from database
         a.disconnect();
     }
 
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
 
     /**
      * Connect to the MySQL database.
@@ -42,9 +48,9 @@ public class App {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(5000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {

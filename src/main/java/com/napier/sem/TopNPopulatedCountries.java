@@ -8,14 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TopNPopulatedCountries {
-    static void topNPopulatedCountriesWorld(int N){
-        Connection con = null;
+    static void topNPopulatedCountriesWorld(Connection con, int N){
         try
         {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            // get N from user
-            //System.out.println("Enter value for N: ");
-            //N = Integer.parseInt(reader.readLine());
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -36,8 +32,7 @@ public class TopNPopulatedCountries {
             System.out.println("Couldn't get country details");
         }
     }
-    static void topNPopulatedCountriesContinent(String conti, int N){
-        Connection con = null;
+    static void topNPopulatedCountriesContinent(Connection con, String conti, int N){
         try
         {
             // Create an SQL statement
@@ -59,8 +54,7 @@ public class TopNPopulatedCountries {
             System.out.println("Couldn't get country details");
         }
     }
-    static void topNPopulatedCountriesRegion(String reg, int N){
-        Connection con = null;
+    static void topNPopulatedCountriesRegion(Connection con, String reg, int N){
         try
         {
             // Create an SQL statement

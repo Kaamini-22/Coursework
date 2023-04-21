@@ -1,5 +1,4 @@
 FROM openjdk:latest
-COPY ./target/classes/Code1 /tmp/Code1
-COPY ./target/classes/com/napier/sem /tmp/com/napier/sem
+COPY ./target/CodeReview1-0.1.0.1-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "Code1.Intro"]
+ENTRYPOINT ["java", "-jar", "CodeReview1-0.1.0.1-jar-with-dependencies.jar"]
