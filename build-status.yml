@@ -1,0 +1,25 @@
+name: Build Status
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build and test code
+        run: |
+          # Replace this command with the command to build and test your code
+          echo "Build and test code"
+      - name: Set build status
+        uses: rtCamp/github-status-action@v2.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: success
+          description: Build and test passed
+          

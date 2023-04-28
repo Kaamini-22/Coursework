@@ -3,6 +3,11 @@ package com.napier.sem;
 import java.sql.*;
 
 public class App {
+    /**
+     * Connection to MySQL database.
+     */
+    static public Connection con = null;
+
     public static void main(String[] args)
     {
         // Create new Application
@@ -10,17 +15,21 @@ public class App {
 
         // Connect to database
         a.connect();
-        country coun = a.getCountry("ARG");
+
+        //define coun
+        Country coun = Country.getCountry(con,"ARG"); // pass in connection to the function
+        System.out.println(coun);
+        //define N
+        int N = 5;
+
         // Display results
-        a.displayCountry(coun);
+        Country.displayCountry(coun);
+        // Top N countries by population in the world
+        TopNPopulatedCountries.topNPopulatedCountriesWorld(con, N); // pass in connection to the function
         // Disconnect from database
         a.disconnect();
     }
 
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
 
     /**
      * Connect to the MySQL database.
@@ -39,9 +48,9 @@ public class App {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(5000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
@@ -66,51 +75,6 @@ public class App {
             }
         }
     }
-    public country getCountry(String CCode)
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT Code, Name, Continent "
-                            + "FROM country "
-                            + "WHERE Code = " + CCode;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new country if valid.
-            // Check one is returned
-            if (rset.next())
-            {
-                country coun = new country();
-                coun.Code = rset.getString("Code");
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                return coun;
-            }
-            else
-                return null;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-    }
-    public void displayCountry(country coun)
-    {
-        if (coun != null)
-        {
-            System.out.println(
-                    coun.Code + " "
-                            + coun.Name + " "
-                            + coun.Continent + "\n"
-                            + coun.Population + "\n"
-                            + coun.GNP + "\n"
-                            + coun.Capital + "\n");
-        }
-    }
+
 
 }
