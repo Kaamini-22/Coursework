@@ -21,7 +21,7 @@ public class TopNPopulatedCountries {
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM world.country "
                             + "ORDER BY Population DESC "
-                            + "LIMIT '" + N + "'";
+                            + "LIMIT " + N;
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -44,7 +44,7 @@ public class TopNPopulatedCountries {
                             + "FROM world.country "
                             + "WHERE Continent = '" + conti + "'"
                             + "ORDER BY Population DESC"
-                            + "LIMIT '" + N + "'";
+                            + "LIMIT  " + N;
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -66,7 +66,7 @@ public class TopNPopulatedCountries {
                             + "FROM world.country "
                             + "WHERE Region = '" + reg + "'"
                             + "ORDER BY Population DESC"
-                            + "LIMIT '" + N + "'";
+                            + "LIMIT " + N;
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);
