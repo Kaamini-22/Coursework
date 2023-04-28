@@ -11,6 +11,7 @@ public class TopNPopulatedCountries {
     static void topNPopulatedCountriesWorld(Connection con, int N){
         try
         {
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
             // Create an SQL statement
@@ -20,7 +21,7 @@ public class TopNPopulatedCountries {
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM world.country "
                             + "ORDER BY Population DESC "
-                            + "LIMIT " + N;
+                            + "LIMIT '" + N + "'";
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -39,11 +40,11 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital"
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM world.country "
                             + "WHERE Continent = '" + conti + "'"
                             + "ORDER BY Population DESC"
-                            + "LIMIT " + N;
+                            + "LIMIT '" + N + "'";
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -61,11 +62,11 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital"
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM world.country "
                             + "WHERE Region = '" + reg + "'"
                             + "ORDER BY Population DESC"
-                            + "LIMIT " + N;
+                            + "LIMIT '" + N + "'";
             // Execute SQL statement
             System.out.println("Results: ");
             ResultSet rset = stmt.executeQuery(strSelect);

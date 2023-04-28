@@ -50,7 +50,7 @@ public class Country {
             String strSelect =
                     "SELECT Code, Name, Continent, Population, GNP, Capital "
                             + "FROM world.country "
-                            + "WHERE Code = " + "'ARG'";
+                            + "WHERE Code = '" + CCode + "'";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new country if valid.
