@@ -37,4 +37,9 @@ Things to do for code review 2:
 6. Full use cases defined.
 7. Use case diagram created.
 We separated the task in group and agreed to help each other. We split the task according to our choices and discussed any  issue in WhatsApp group . The submission for code review 2 is on Friday 3 march.
+On Friday 3rd March we submitted our code review 2. Overall we got good score but  work more on use case diagram, defining full use case and we have to use kanban board more often to communicate about ready, in progress and completed task so that all group members knows what to do next. From following weeks we actively started using kanban bord to do our task. 
+Next we have to focus on defining integration test and unit test. This was a little bit tougher than we thought to be. All the team members gave their best for the code review 3 but we were missing most of the task that needed to be done for this code review. We all agreed to work more on the unit test and integration test. 
+We group members were communicating with each other from whatsapp. We couldnot meet on easter break but actively participate for the task for next code review through social media and our group leader assigned task for each member so that everybody knew what they have to do. 
+Today 28th april; final day for our code review submission. We have to show our Deployment working and Bug reporting system set-up. 
+
  
