@@ -17,9 +17,9 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT CountryCode, Name, Continent, Region, Population, Capital"
-                            + "FROM country "
-                            + "ORDER BY Population"
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM world.country "
+                            + "ORDER BY Population DESC "
                             + "LIMIT " + N;
             // Execute SQL statement
             System.out.println("Results: ");
@@ -39,10 +39,10 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT CountryCode, Name, Continent, Region, Population, Capital"
-                            + "FROM country "
+                    "SELECT Code, Name, Continent, Region, Population, Capital"
+                            + "FROM world.country "
                             + "WHERE Continent = '" + conti + "'"
-                            + "ORDER BY Population"
+                            + "ORDER BY Population DESC"
                             + "LIMIT " + N;
             // Execute SQL statement
             System.out.println("Results: ");
@@ -61,10 +61,10 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT CountryCode, Name, Continent, Region, Population, Capital"
-                            + "FROM country "
+                    "SELECT Code, Name, Continent, Region, Population, Capital"
+                            + "FROM world.country "
                             + "WHERE Region = '" + reg + "'"
-                            + "ORDER BY Population"
+                            + "ORDER BY Population DESC"
                             + "LIMIT " + N;
             // Execute SQL statement
             System.out.println("Results: ");
