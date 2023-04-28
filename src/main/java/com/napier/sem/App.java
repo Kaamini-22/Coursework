@@ -21,11 +21,31 @@ public class App {
         System.out.println(coun);
         //define N
         int N = 5;
+        String conti = "Africa";
+        String reg = "Central Africa";
 
         // Display results
         Country.displayCountry(coun);
         // Top N countries by population in the world
+        System.out.println("Top N countries in world:");
         TopNPopulatedCountries.topNPopulatedCountriesWorld(con, N); // pass in connection to the function
+        // Top N countries by population in the continent
+        System.out.println("Top N countries in " + conti + ":");
+        TopNPopulatedCountries.topNPopulatedCountriesContinent(con, conti, N); // pass in connection to the function
+        // Top N countries by population in the region
+        System.out.println("Top N countries in " + reg + ":");
+        TopNPopulatedCountries.topNPopulatedCountriesRegion(con, reg, N); // pass in connection to the function
+
+
+        // Top N cities by population in the world
+        System.out.println("Top N cities in world:");
+        TopNPopulatedCities.topNPopulatedCitiesWorld(con, N); // pass in connection to the function
+        // Top N cities by population in the continent
+        System.out.println("Top N cities in " + conti + ":");
+        TopNPopulatedCities.topNPopulatedCitiesContinent(con, conti, N); // pass in connection to the function
+        // Top N cities by population in the region
+        System.out.println("Top N cities in " + reg + ":");
+        TopNPopulatedCities.topNPopulatedCitiesRegion(con, reg, N); // pass in connection to the function
         // Disconnect from database
         a.disconnect();
     }

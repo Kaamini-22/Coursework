@@ -5,10 +5,9 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-public class TopNPopulatedCountries {
-    static void topNPopulatedCountriesWorld(Connection con, int N){
+public class TopNPopulatedCities {
+    static void topNPopulatedCitiesWorld(Connection con, int N){
         try
         {
 
@@ -18,8 +17,8 @@ public class TopNPopulatedCountries {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM world.country "
+                    "SELECT ID, Name, CountryCode, District, Population "
+                            + "FROM world.city "
                             + "ORDER BY Population DESC "
                             + "LIMIT " + N;
             // Execute SQL statement
@@ -27,14 +26,13 @@ public class TopNPopulatedCountries {
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.Code = rset.getString("Code");
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getInt("Capital");
-                coun.displayCountry(coun);
+                City cit = new City();
+                cit.ID = rset.getInt("ID");
+                cit.Name = rset.getString("Name");
+                cit.CountryCode = rset.getString("CountryCode");
+                cit.District = rset.getString("District");
+                cit.Population = rset.getInt("Population");
+                cit.displayCity(cit);
             }
             // Check one is returned
         }
@@ -44,15 +42,16 @@ public class TopNPopulatedCountries {
             System.out.println("Couldn't get country details");
         }
     }
-    static void topNPopulatedCountriesContinent(Connection con, String conti, int N){
+    static void topNPopulatedCitiesContinent(Connection con, String conti, int N){
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM world.country "
+                    "SELECT ID, Name, CountryCode, District, Population "
+                            + "FROM world.city "
+                            + "JOIN world.country ON world.city.CountryCode = world.country.Code "
                             + "WHERE Continent = '" + conti + "'"
                             + "ORDER BY Population DESC "
                             + "LIMIT  " + N;
@@ -61,14 +60,13 @@ public class TopNPopulatedCountries {
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.Code = rset.getString("Code");
-                coun.Name = rset.getString("Name");
-                coun.Continent = conti;
-                coun.Region = rset.getString("Region");
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getInt("Capital");
-                coun.displayCountry(coun);
+                City cit = new City();
+                cit.ID = rset.getInt("ID");
+                cit.Name = rset.getString("Name");
+                cit.CountryCode = rset.getString("CountryCode");
+                cit.District = rset.getString("District");
+                cit.Population = rset.getInt("Population");
+                cit.displayCity(cit);
             }
         }// Check one is returned
         catch (Exception e)
@@ -77,15 +75,15 @@ public class TopNPopulatedCountries {
             System.out.println("Couldn't get country details");
         }
     }
-    static void topNPopulatedCountriesRegion(Connection con, String reg, int N){
+    static void topNPopulatedCitiesRegion(Connection con, String reg, int N){
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM world.country "
+                    "SELECT ID, Name, CountryCode, District, Population "
+                            + "FROM world.city "
                             + "WHERE Region = '" + reg + "'"
                             + "ORDER BY Population DESC "
                             + "LIMIT " + N;
@@ -94,14 +92,13 @@ public class TopNPopulatedCountries {
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.Code = rset.getString("Code");
-                coun.Name = rset.getString("Name");
-                coun.Continent = rset.getString("Continent");
-                coun.Region = reg;
-                coun.Population = rset.getInt("Population");
-                coun.Capital = rset.getInt("Capital");
-                coun.displayCountry(coun);
+                City cit = new City();
+                cit.ID = rset.getInt("ID");
+                cit.Name = rset.getString("Name");
+                cit.CountryCode = rset.getString("CountryCode");
+                cit.District = rset.getString("District");
+                cit.Population = rset.getInt("Population");
+                cit.displayCity(cit);
             }
         }// Check one is returned
         catch (Exception e)
