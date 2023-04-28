@@ -6,4 +6,5 @@ name: Build Status
 
 [![LICENSE](https://img.shields.io/github/license/Kaamini-22/Coursework.svg?style=flat-square)](https://github.com/Kaamini-22/Coursework/blob/master/LICENSE)
 
-[![Releases](https://img.shields.io/github/release/Kaamini/Coursework/all.svg?style=flat-square)](https://github.com/Kaamini-22/Coursework/releases)
+[![Releases](https://img.shields.io/github/release/Kaamini-22/Coursework/all.svg?style=flat-square)](https://github.com/Kaamini-22/Coursework/releases)
+
